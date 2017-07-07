@@ -1,0 +1,18 @@
+{
+    "name": "pms ",
+    "description": "A PMS Application",
+    "keywords": ["microframework", "rest", "router", "psr7"],
+    "homepage": "http://github.com/wachid.sst/pms",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josh Lockhart",
+            "email": "info@joshlockhart.com",
+            "homepage": "http://www.joshlockhart.com/"
+        }
+    ],
+    
+   "require": {
+        "slim/slim": "3.*"
+    }
+}
