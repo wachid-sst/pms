@@ -8,7 +8,7 @@
 
 // For system routing
 
-
+use App\Controllers\UserController;
 
 
 $app->get('/',  function($request, $response) {
@@ -16,6 +16,6 @@ $app->get('/',  function($request, $response) {
 });
 
 
-$app->get('/user','\App\Controllers\UserController:index');
+$app->get('/user',UserController::class.':index');
 
-$app->get('/user/{id}','\App\Controllers\UserController:detail');
+$app->get('/user/{id}',UserController::class.':detail');
