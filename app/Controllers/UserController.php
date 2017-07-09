@@ -7,9 +7,18 @@
  */
 namespace App\Controllers;
 
+use Interop\Container\ContainerInterface;
+
 class UserController {
-    public function index(){
-        echo "this controller user";
+    
+    protected $kontainer;
+    
+    public function __construct(ContainerInterface $container) {
+        $this->kontainer = $container;
+    }
+    
+    public function index($request, $response){
+        return $this->kontainer ->view->render($response, 'user.twig');
     }
     
         public function detail(){
