@@ -18,3 +18,4 @@ $app->get('/',  function($request, $response) {
 
 $app->get('/user','\App\Controllers\UserController:index');
 
+$app->get('/user/{id}','\App\Controllers\UserController:detail');

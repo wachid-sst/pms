@@ -11,4 +11,8 @@ class UserController {
     public function index(){
         echo "this controller user";
     }
+    
+        public function detail(){
+        echo "this controller user detail";
+    }
 }
