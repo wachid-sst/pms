@@ -8,8 +8,18 @@
 require __DIR__ .'/../vendor/autoload.php';
 
 $app = new Slim\App([
-    'setting' => [
-        'displayErrorDetails'=> true
+    'settings' => [
+        'displayErrorDetails'=> true,
+        'db' => [
+            'driver'    => 'mysql',
+            'host'      => '127.0.0.1',
+            'database'  => 'pms_apps',
+            'username'  => 'iniuser',
+            'password'  => 'ini@password',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ]
     ]
 ]);
 

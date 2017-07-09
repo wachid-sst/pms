@@ -8,6 +8,9 @@
 
 // For system routing
 
-$app->get('/',  function() {
-    return 'Halo';
+
+
+
+$app->get('/',  function($request, $response) {
+    return $this->view->render($response, 'home.twig');
 });
