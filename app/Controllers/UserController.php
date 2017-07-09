@@ -9,19 +9,15 @@ namespace App\Controllers;
 
 use Interop\Container\ContainerInterface;
 
-class UserController {
+class UserController extends BaseController {
     
-    protected $kontainer;
-    
-    public function __construct(ContainerInterface $container) {
-        $this->kontainer = $container;
+  public function index($request, $response)
+    {
+        return $this->c->view->render($response, 'user/index.twig');
     }
     
-    public function index($request, $response){
-        return $this->kontainer ->view->render($response, 'user.twig');
-    }
+    public function detail($request, $response){
+        return $this->c->view->render($response, 'user/detail.twig');
     
-        public function detail(){
-        echo "this controller user detail";
     }
 }
