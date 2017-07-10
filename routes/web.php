@@ -24,7 +24,16 @@ use App\Middleware\AuthMiddleware;
     $app->get('/login',LoginController::class.':index');
     $app->post('/login',  function ($request, $response, $arg){
     
-      die('berhasil');  
+        if (false === $request->getAttribute('csrf_status')) {
+            
+            // display suitable error here
+            return "not berhasil";
+            } else {
+            // successfully passed CSRF check
+    
+            return "berhasil";
+        }
+        
     });
 
     $app->get('/user',UserController::class.':index');

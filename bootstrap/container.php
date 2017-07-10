@@ -39,6 +39,11 @@ $container['db'] = function ($container) use ($capsule){
 };
 
 
-$container['csrf'] = function ($c){
-    return new \Slim\Csrf\Guard;
+$container['csrf'] = function ($c) {
+    $guard = new \Slim\Csrf\Guard();
+    $guard->setFailureCallable(function ($request, $response, $next) {
+        $request = $request->withAttribute("csrf_status", false);
+        return $next($request, $response);
+    });
+    return $guard;
 };
