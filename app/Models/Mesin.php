@@ -6,9 +6,11 @@
  * and open the template in the editor.
  */
 
-require '../bootstrap/app.php';
-require '../bootstrap/container.php';
+namespace App\Models;
 
-require '../routes/web.php';
-require '../routes/api.php';
-$app->run();
+use Illuminate\Database\Eloquent\Model;
+
+class Mesin extends Model {
+    
+    protected $table = "mesin";
+}
