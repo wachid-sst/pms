@@ -9,12 +9,17 @@
 // For system routing
 
 use App\Controllers\UserController;
+use App\Controllers\HomeController;
 
+$mw = function($request, $response, $next){
+    $response ->getBody()->write('SEBELUM MIDDLEWARE');
+    $response = $next($request, $response);
+    $response->getBody()->write('SETELAH MIDDLEWARE');
+    
+        return $response;
+};
 
-$app->get('/',  function($request, $response) {
-    return $this->view->render($response, 'home.twig');
-});
-
+$app->get('/',HomeController::class.':index')->add($mw);
 
 $app->get('/user',UserController::class.':index');
 
