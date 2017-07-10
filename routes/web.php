@@ -11,15 +11,9 @@
 use App\Controllers\UserController;
 use App\Controllers\HomeController;
 
-$mw = function($request, $response, $next){
-    $response ->getBody()->write('SEBELUM MIDDLEWARE');
-    $response = $next($request, $response);
-    $response->getBody()->write('SETELAH MIDDLEWARE');
-    
-        return $response;
-};
+use App\Middleware\AuthMiddleware;
 
-$app->get('/',HomeController::class.':index')->add($mw);
+$app->get('/',HomeController::class.':index')->add(new AuthMiddleware());
 
 $app->get('/user',UserController::class.':index');
 
