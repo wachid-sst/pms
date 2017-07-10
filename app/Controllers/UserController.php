@@ -7,7 +7,6 @@
  */
 namespace App\Controllers;
 
-use Interop\Container\ContainerInterface;
 use App\Models\User;
 
 class UserController extends BaseController {
