@@ -7,18 +7,20 @@
  */
 namespace App\Middleware;
 
-class AuthMiddleware {
+class AuthMiddleware 
+
+{
     
-    public function __invoke($request, $response, $next){
+    public function __invoke($request, $response, $next)
+    {
+ 
+    if(!isset($_SESSION['id']))
+        {
         
+        return $response->withRedirect('login');
  
-    $response ->getBody()->write('SEBELUM MIDDLEWARE');
-    $response = $next($request, $response);
-    $response->getBody()->write('SETELAH MIDDLEWARE');
+        }
     
-        return $response;
- 
+    
     }
-    
-    
 }

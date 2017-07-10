@@ -6,6 +6,10 @@
  * and open the template in the editor.
  */
 
+
+// Start PHP session
+session_start();
+
 $container = $app->getContainer();
 
 //Container untuk view
@@ -23,8 +27,6 @@ $container['view'] = function ($container){
     return $view;
 };
 
-
-    
 $capsule = new \Illuminate\Database\Capsule\Manager;
 $capsule->addConnection($container['settings']['db']);
 $capsule->setAsGlobal();
@@ -33,4 +35,9 @@ $capsule->bootEloquent();
 //Container untuk database
 $container['db'] = function ($container) use ($capsule){
     return $capsule;
+};
+
+
+$container['csrf'] = function ($c){
+    return new \Slim\Csrf\Guard;
 };

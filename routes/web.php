@@ -10,11 +10,30 @@
 
 use App\Controllers\UserController;
 use App\Controllers\HomeController;
+use App\Controllers\AuthController;
+use App\Controllers\LoginController;
 
 use App\Middleware\AuthMiddleware;
 
-$app->get('/',HomeController::class.':index')->add(new AuthMiddleware());
+    $app->get('/',HomeController::class.':index')->add(new AuthMiddleware());
+    
+    // Register CSRF
+    
+    $app->add($container->get('csrf'));
+    
+    $app->get('/login',LoginController::class.':index');
+    $app->post('/login',  function ($request, $response, $arg){
+    
+      die('berhasil');  
+    });
 
-$app->get('/user',UserController::class.':index');
+    $app->get('/user',UserController::class.':index');
 
-$app->get('/user/{id}',UserController::class.':detail');
+    $app->get('/user{id}',UserController::class.':detail');
+
+
+$app->group('/member', function(){
+
+
+ 
+    });
