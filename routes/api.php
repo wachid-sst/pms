@@ -7,6 +7,8 @@
  */
 
 $app ->group('/api', function (){
+    
+   $this->post('/login', '\App\Controllers\UserController:login');
 
    $this->group('/mesin', function (){
    
