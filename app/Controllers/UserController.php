@@ -8,6 +8,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use \Firebase\JWT\JWT;
 
 class UserController extends BaseController {
     
@@ -21,6 +22,10 @@ class UserController extends BaseController {
         ]);
     }
     
+    private $key = "jangandihafalsusahsekali";
+    #rahasia123
+
+
     public function login($request, $response) {
         
         $username = $request->getParsedBody('user_ name');
@@ -29,10 +34,33 @@ class UserController extends BaseController {
         $user = User::where('user_name',$username)->where('user_password', $password)->first();
     
         if(empty($user)){
-            die('kosong');
+            return $response->withJson([
+                'success' => false,
+                'msessage' => 'user atau pass salah'
+            ]);
         }
+    
+        $token = [
+            "iss" => "wachid.sst",
+            "iat" => time(),
+            "exp" => time()+60,
+            "data"=> [
+                "user_id" => $user->id,
+                "u_name" =>$user->user_name,
+                "u_password" =>$user->user_password
+            ]
+            
+        ];
         
-        return $response->WithJson($user);
+        $jwt = JWT::encode($token, $this->key);
+        
+        return $response->withJson([
+           
+            'success' => true,
+            'message' => 'login success',
+            'jwt'     => $jwt
+        ]);
+                 
     }
 
 

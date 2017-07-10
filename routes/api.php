@@ -12,7 +12,8 @@ $app ->group('/api', function (){
 
    $this->group('/mesin', function (){
    
-       $this->get('', '\App\Controllers\MesinController:index');
+       $this->get('/', '\App\Controllers\MesinController:index');
+       $this->post('/', '\App\Controllers\MesinController:store');
        $this->get('/{id}', '\App\Controllers\MesinController:show');
        
    }); 
