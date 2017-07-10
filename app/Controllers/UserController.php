@@ -15,8 +15,11 @@ class UserController extends BaseController {
   public function index($request, $response)
     {
       
+      $data = User::all();
         
-        return $this->c->view->render($response, 'user/index.twig');
+        return $this->c->view->render($response, 'user/index.twig', [
+            'users' => $data
+        ]);
     }
     
     public function detail($request, $response){
