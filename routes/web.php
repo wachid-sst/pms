@@ -1,15 +1,14 @@
 <?php
 
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Abdur Rochman Wachid <wachid.web.id>
+ * Update 11 July 2017
  */
 
 // For system routing
-require_once '../helper/validation_helper.php';
 
-use DavidePastore\Slim\Validation\Validation;
+use App\Helper\ValidationHelper;
+$vh = new ValidationHelper();
 
 use App\Controllers\UserController;
 use App\Controllers\HomeController;
@@ -26,7 +25,7 @@ use App\Middleware\AuthMiddleware;
     $app->post('/login',HomeController::class.':login_action');
     $app->get('/register',HomeController::class.':register')->setName('register');
     $app->post('/register',HomeController::class.':register_action')
-                ->add(new Validation($register_validator)); 
+                ->add($vh::validate('register_user')); 
 
     $app->get('/user',UserController::class.':index');
     $app->get('/user{id}',UserController::class.':detail');
