@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+use App\Middleware\JwtMiddleware;
 $app ->group('/api', function (){
     
    $this->post('/login', '\App\Controllers\UserController:login');
@@ -13,7 +13,7 @@ $app ->group('/api', function (){
    $this->group('/mesin', function (){
    
        $this->get('/', '\App\Controllers\MesinController:index');
-       $this->post('/', '\App\Controllers\MesinController:store');
+       $this->post('/', '\App\Controllers\MesinController:store')->add(new JwtMiddleware);
        $this->get('/{id}', '\App\Controllers\MesinController:show');
        
    }); 

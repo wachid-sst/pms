@@ -8,8 +8,6 @@
 namespace App\Controllers;
 
 use App\Models\Mesin;
-use \Firebase\JWT\JWT;
-
 
 class MesinController extends BaseController {
     public function index($request, $response) {
@@ -20,15 +18,7 @@ class MesinController extends BaseController {
     private $key = "jangandihafalsusahsekali";
     
     public function store($request, $response) {
-        
-        $jwt = $request->getHeader('Authorization')[0]; 
-        
-        try {
-            
-            $decoded = JWT::decode($jwt, $this->key, array('HS256'));
-            
-            //return $response->withJson($decoded);
-            
+            // Save mesin data
             $mesin = Mesin::create([
                 
                 'mesin_name' => $request->getParsedBody()['mesin_name'],
@@ -43,9 +33,7 @@ class MesinController extends BaseController {
             'data'     => $mesin
         ]);
             
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
-            }
+        
         }
     
     public function show($request, $response, $arg) {
