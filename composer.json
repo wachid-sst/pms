@@ -20,7 +20,8 @@
         "firebase/php-jwt" : "5.*",
         "vlucas/phpdotenv" : "2.*",
         "slim/flash" : "0.2.*",
-        "davidepastore/slim-validation" : "0.5.*"
+        "davidepastore/slim-validation" : "0.5.*",
+        "kanellov/slim-twig-flash" : "0.2.*"
     },
     "autoload" :{
         "psr-4" : {

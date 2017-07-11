@@ -36,6 +36,10 @@ class ComposerStaticInit77f41b818dc82648202d69218c5a8825
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
+        'K' => 
+        array (
+            'Knlv\\Slim\\Views\\' => 16,
+        ),
         'I' => 
         array (
             'Interop\\Container\\' => 18,
@@ -104,6 +108,10 @@ class ComposerStaticInit77f41b818dc82648202d69218c5a8825
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Knlv\\Slim\\Views\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kanellov/slim-twig-flash/src',
         ),
         'Interop\\Container\\' => 
         array (

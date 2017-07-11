@@ -1,4 +1,8 @@
 
 <h1>dashboard</h1>
 
-<h2>{{msg}} </h2>
+<h2>{% for msg in flash ('info')%} 
+    <p> {{msg}} </p>
+    
+    {% endfor %}
+</h2>
