@@ -1,10 +1,10 @@
 <?php
 
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Abdur Rochman Wachid <wachid.web.id>
+ * Update 11 July 2017
  */
+
 use App\Middleware\JwtMiddleware;
 $app ->group('/api', function (){
     
@@ -12,9 +12,11 @@ $app ->group('/api', function (){
 
    $this->group('/mesin', function (){
    
-       $this->get('/', '\App\Controllers\MesinController:index');
+       $this->get('/', '\App\Controllers\MesinController:index')->add(new JwtMiddleware);
+       $this->get('/{id}', '\App\Controllers\MesinController:show')->add(new JwtMiddleware);
        $this->post('/', '\App\Controllers\MesinController:store')->add(new JwtMiddleware);
-       $this->get('/{id}', '\App\Controllers\MesinController:show');
-       
+       $this->put('/{id}', '\App\Controllers\MesinController:update')->add(new JwtMiddleware);
+       $this->delete('/{id}', '\App\Controllers\MesinController:delete')->add(new JwtMiddleware);
+
    }); 
 });

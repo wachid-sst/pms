@@ -43,7 +43,7 @@ class UserController extends BaseController {
         $token = [
             "iss" => "wachid.sst",
             "iat" => time(),
-            "exp" => time()+60,
+            "exp" => time()+60*60,
             "data"=> [
                 "user_id" => $user->id,
                 "u_name" =>$user->user_name,
