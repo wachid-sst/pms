@@ -10,7 +10,7 @@ use \Firebase\JWT\JWT;
 
 class JwtMiddleware {
     
-    private $key = "jangandihafalsusahsekali";
+    
     
     public function __invoke($request, $response, $next) {
         $jwt = $request->getHeader('Authorization')['0'];
@@ -18,7 +18,7 @@ class JwtMiddleware {
         // decode token 
         
         try {
-            $decoded = JWT::decode($jwt, $this->key, array ('HS256'));
+            $decoded = JWT::decode($jwt, getenv('KEY_JWT'), array ('HS256'));
         
             return $next($request, $response);
             

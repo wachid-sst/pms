@@ -17,7 +17,8 @@
         "slim/twig-view" :"2.*",
         "illuminate/database" :"5.3",
         "slim/csrf" : "0.8.*",
-        "firebase/php-jwt" : "5.*"
+        "firebase/php-jwt" : "5.*",
+        "vlucas/phpdotenv" : "2.*"
     },
     "autoload" :{
         "psr-4" : {

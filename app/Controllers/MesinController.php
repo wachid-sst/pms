@@ -14,8 +14,6 @@ class MesinController extends BaseController {
         return $response->withJson(Mesin::all());
     }
     
-    private $key = "jangandihafalsusahsekali";
-    
     public function store($request, $response) {
             // Save mesin data
             $mesin = Mesin::create([

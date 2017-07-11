@@ -44,6 +44,10 @@ class ComposerStaticInit77f41b818dc82648202d69218c5a8825
             'Firebase\\JWT\\' => 13,
             'FastRoute\\' => 10,
         ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
         'C' => 
         array (
             'Carbon\\' => 7,
@@ -114,6 +118,10 @@ class ComposerStaticInit77f41b818dc82648202d69218c5a8825
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Carbon\\' => 
         array (

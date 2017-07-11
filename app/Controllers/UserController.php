@@ -22,9 +22,6 @@ class UserController extends BaseController {
         ]);
     }
     
-    private $key = "jangandihafalsusahsekali";
-    #rahasia123
-
 
     public function login($request, $response) {
         
@@ -52,7 +49,7 @@ class UserController extends BaseController {
             
         ];
         
-        $jwt = JWT::encode($token, $this->key);
+        $jwt = JWT::encode($token, getenv('KEY_JWT'));
         
         return $response->withJson([
            
