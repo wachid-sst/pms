@@ -22,9 +22,12 @@ class JwtMiddleware {
         
             return $next($request, $response);
             
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             
-            die('token failed');
+            return $response->withJson([
+                'success' => false,
+                'message' => 'token failed'
+            ],401);
 
         }
         
