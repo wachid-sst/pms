@@ -10,8 +10,9 @@
 
 use App\Controllers\UserController;
 use App\Controllers\HomeController;
-use App\Controllers\AuthController;
 use App\Controllers\LoginController;
+use App\Controllers\DashboardController;
+
 
 use App\Middleware\AuthMiddleware;
 
@@ -22,19 +23,8 @@ use App\Middleware\AuthMiddleware;
     $app->add($container->get('csrf'));
     
     $app->get('/login',LoginController::class.':index');
-    $app->post('/login',  function ($request, $response, $arg){
-    
-        if (false === $request->getAttribute('csrf_status')) {
-            
-            // display suitable error here
-            return "not berhasil";
-            } else {
-            // successfully passed CSRF check
-    
-            return "berhasil";
-        }
-        
-    });
+    $app->post('/login',LoginController::class.':login');
+    $app->get('/dashboard',DashboardController::class.':index');
 
     $app->get('/user',UserController::class.':index');
 

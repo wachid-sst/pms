@@ -65,4 +65,6 @@ class UserController extends BaseController {
         return $this->c->view->render($response, 'user/detail.twig');
     
     }
+    
+    
 }

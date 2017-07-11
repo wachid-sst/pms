@@ -47,3 +47,8 @@ $container['csrf'] = function ($c) {
     });
     return $guard;
 };
+
+$container['flash'] = function (){
+    return new \Slim\Flash\Messages();
+};
+
