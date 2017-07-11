@@ -7,27 +7,28 @@
  */
 
 // For system routing
+require_once '../helper/validation_helper.php';
+
+use DavidePastore\Slim\Validation\Validation;
 
 use App\Controllers\UserController;
 use App\Controllers\HomeController;
-use App\Controllers\LoginController;
-use App\Controllers\DashboardController;
-
-
 use App\Middleware\AuthMiddleware;
 
-    $app->get('/',HomeController::class.':index')->add(new AuthMiddleware());
+
+    $app->get('/',HomeController::class.':index');//->add(new AuthMiddleware());
     
     // Register CSRF
     
     $app->add($container->get('csrf'));
     
-    $app->get('/login',LoginController::class.':index');
-    $app->post('/login',LoginController::class.':login');
-    $app->get('/dashboard',DashboardController::class.':index');
+    $app->get('/login',HomeController::class.':login');
+    $app->post('/login',HomeController::class.':login_action');
+    $app->get('/register',HomeController::class.':register')->setName('register');
+    $app->post('/register',HomeController::class.':register_action')
+                ->add(new Validation($register_validator)); 
 
     $app->get('/user',UserController::class.':index');
-
     $app->get('/user{id}',UserController::class.':detail');
 
 
