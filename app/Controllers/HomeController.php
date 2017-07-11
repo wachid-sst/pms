@@ -27,6 +27,7 @@ class HomeController Extends BaseController
             
             // display suitable error here
             return "not berhasil";
+            
             } else {
                 
             // successfully passed CSRF check
@@ -50,6 +51,13 @@ class HomeController Extends BaseController
     
         public function register_action($request, $response, $args) {
         
+            if (false === $request->getAttribute('csrf_status')) {
+            
+            // display suitable error here
+            return "not berhasil";
+            
+            } else {
+            
             if($request->getAttribute('has_errors')){
                 
                 //print_r($request->getAttribute('errors'));
@@ -57,7 +65,7 @@ class HomeController Extends BaseController
                 $this->c->flash->addMessage('errors',$errors);
                 return $response->withStatus(302)->withRedirect(register);
          } 
-        
+            }
     }
     
         public function create($request, $response, $args) {
