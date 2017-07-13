@@ -12,10 +12,11 @@ $vh = new ValidationHelper();
 
 use App\Controllers\UserController;
 use App\Controllers\HomeController;
+use App\Controllers\DashboardController;
 use App\Middleware\AuthMiddleware;
 
 
-    $app->get('/',HomeController::class.':index');//->add(new AuthMiddleware());
+    $app->get('/',HomeController::class.':index')->add(new AuthMiddleware());
     
     // Register CSRF
     
@@ -29,6 +30,7 @@ use App\Middleware\AuthMiddleware;
 
     $app->get('/user',UserController::class.':index');
     $app->get('/user{id}',UserController::class.':detail');
+    $app->get('/dashboard',DashboardController::class.':index');
 
 
 $app->group('/member', function(){

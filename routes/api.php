@@ -9,7 +9,7 @@ use App\Middleware\JwtMiddleware;
 $app ->group('/api', function (){
     
    $this->post('/login', '\App\Controllers\UserController:login');
-
+   $this->post('/register', '\App\Controllers\UserController:register');
    $this->group('/mesin', function (){
    
        $this->get('/', '\App\Controllers\MesinController:index')->add(new JwtMiddleware);
